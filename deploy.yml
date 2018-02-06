@@ -1,0 +1,10 @@
+---
+
+- name: Ansible playbook to deploy a Django app
+  hosts: server
+
+  roles:
+          - core
+          - postgresql
+          - django
+          - services

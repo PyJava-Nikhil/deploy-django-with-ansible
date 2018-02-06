@@ -1,0 +1,2 @@
+[server]
+xxx.xx.xxx.xx ansible_sudo_pass=xxxxxx

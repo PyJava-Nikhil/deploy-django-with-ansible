@@ -1,0 +1,18 @@
+---
+
+- name: Generate the nginx configuration file
+  copy: src=files/nginx.conf
+       dest=/etc/nginx/sites-available/xxxx
+
+- name: uwsgi configuration
+  copy: src=files/uwsgi.conf
+        dest=/home/goplay_backend/myproject/xxx.ini
+
+- name: enable nginx configuration
+  file: >
+    dest=/etc/nginx/sites-enabled/xxx
+    src=/etc/nginx/sites-available/xxxx
+    state=link
+
+- name: restart nginx
+  service: name=nginx state=restarted

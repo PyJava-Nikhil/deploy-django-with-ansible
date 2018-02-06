@@ -1,0 +1,7 @@
+---
+
+run_commands:
+  - makemigrations
+  - migrate
+  - collectstatic
+

@@ -1,0 +1,31 @@
+---
+
+- name: create a user
+  postgresql_user:
+    name: "xxxx"
+    password: "xxxx"
+
+  become_method: sudo
+  become_user: postgres
+
+
+- name: create the database
+  postgresql_db:
+     name: "xxxx"
+     owner: "xxxx"
+     encoding: UTF8
+
+  become_method: sudo
+  become_user: postgres
+
+- name: grant privileges
+  postgresql_privs:
+    database: "xxxx"
+    objs: ALL_IN_SCHEMA
+    state: present
+    privs: All
+    role: "xxxxx"
+    grant_option: yes
+
+  become_method: sudo
+  become_user: postgres

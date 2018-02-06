@@ -1,0 +1,20 @@
+---
+
+ - name: Project Directory
+   file: path=/root/myproject/projectdir/
+        state=directory
+        mode=0755
+        owner=root
+        recurse=yes
+
+ - git:
+      repo: 'https://{{ githubuser | urlencode }}:{{ githubpassword }}@bitbucket.org/xxxxx/private_repo.git'
+      dest: /root/myproject/projectdir/
+      clone: yes
+      ssh_opts: "-o StrictHostKeyChecking=no"
+      update: no
+
+ - name: Create virtualenv
+   pip: virtualenv="/root/myproject/env" 
+        virtualenv_python=python3.5
+        requirements=/root/myproject/projectdir/requirements.txt
